@@ -1,0 +1,58 @@
+
+
+{% include "NewHeader.html" %}
+<div class="container mx-auto px-8  mt-16 ">
+
+
+  {% if compressed_file %}
+  
+  <div class="container mx-auto px-4 mt-12">
+    <div class="bg-white-900 p-8 rounded-lg shadow-lg text-center">
+
+      <p class="text-white text-xl mb-4">Your operation is <span class="text-green-300" >successfull</span>, File is Ready For Download </p>
+    
+      {% if compressed_file %}
+        <a href="{{ compressed_file }}"  class="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-700 focus:outline-none transition duration-300" download>Download</a>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% endif %}
+
+
+<br>
+
+  <div class="flex flex-col text-center w-full mb-20">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white text-gray-900 branding">Compress & Download</h1>
+    <p class="lg:w-2/3 mx-auto leading-relaxed text-white text-base branding"> Upload Image, PDF & compress it, our software does  compression without effecting the  quality much.
+    </p>
+  </div>
+
+  <form action="/compress" method="post" enctype="multipart/form-data" class="bg-gray-900 p-8 rounded shadow-lg">
+
+    <div class="mb-6">
+      <label for="formFile" class="block text-white text-sm font-medium mb-2">Upload Image or PDF</label>
+      <input type="file" id="formFile" name="file" class="w-full border border-gray-700 text-white p-2 rounded focus:outline-none">
+    </div>
+
+    <div class="mb-6">
+      <label for="compressionQuality" class="block text-white  text-sm font-medium mb-2">Compression Quality</label>
+      <select name="operations" id="compressionQuality" class="w-full border border-gray-300 p-2 rounded focus:outline-none text-white bg-gray-700">
+        <option value="" disabled selected>Choose Compression Quality</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="veryhigh">Very High</option>
+      </select>
+    </div>
+
+    <button type="submit" class="bg-green-200 text-black py-2 px-6 rounded hover:bg-green-400 focus:outline-none">  Compress</button>
+
+
+  </form>
+</div>
+
+<br> <br> <br>
+
+{% include "bot.html" %}
+{% include "footer.html" %}
